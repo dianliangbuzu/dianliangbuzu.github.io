@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://dianliangbuzu.github.io</id>
+    <title>Gridea</title>
+    <updated>2020-08-24T09:55:09.697Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://dianliangbuzu.github.io"/>
+    <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://dianliangbuzu.github.io/images/avatar.png</logo>
+    <icon>https://dianliangbuzu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[谈谈我为什么要写博客]]></title>
+        <id>https://dianliangbuzu.github.io/post/hello-gridea/</id>
+        <link href="https://dianliangbuzu.github.io/post/hello-gridea/">
+        </link>
+        <updated>2021-04-04T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="起因">起因</h2>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="起因">起因</h2>
+<!-- more -->
+<p>2020年春节疫情的爆发, 开启了全民坐月子的大规模行动<br>
+(毕竟老老实实宅家中是我能为疫情做出的最大贡献了)</p>
+<p>每天的日常便是： 打开手机，查看疫情是否好转，最近进展。 偶尔也会跟朋友打打游戏、追番。 生活一停滞，时间久了我就变得异常焦虑，身边了解我的人都知道我其实是一个多虑的人。 我生活中扮演的角色是程序员, 确切的说是不入流的前端开发，因为计算机方面的知识很薄弱, 我是从Android 开发迈入这个行业的, 中途因为公司需要转的前端，为什么是前端呢?</p>
+<p>凡是可以用 JavaScript 来写的应用，最终都会用 JavaScript 来写。——Atwood定律(Jeff Atwood在2007年提出) (其实就是节省公司开发成本啦)</p>
+<p>更多的时候我是现搜现做(基于搜索引擎编程)， 当然最终项目也能符合公司需求按时交付，毕竟我也是名有态度的调包选手,就这样摸爬滚打到了现在。</p>
+<h2 id="现状">现状</h2>
+<p>2018年加入了现在公司，到现在也将近两年了。2019年底就被Leader叫到办公室, 让我负责整个前端小组, 问我有什么看法?<br>
+当时我内心蹦出的第一个念头是: 我想。</p>
+<p>其实在过去的一年, 或多或少我都在扮演这个角色，当然以往的我陷入了一个误区，就是把有挑战、有难度的活都揽在手上。把最基本的业务都交给大家, 甚至一个跟我相处时间最长的同事, 我把很多杂事都交给他人处理, 久而久之就把大家的耐心都消失殆尽了。如果换位思考我估计熬不住吧, 写业务半年、一年下来对于成长来说其实是很危险的一件事, 如果让大家都参与项目基建参与较为复杂、有挑战性的工作才会持续保持激情。<br>
+随着公司的迅速发展, 前端组成也由最初的两人到如今7人小组, 对于一个初创型公司来说前端占比已经不低了。<br>
+当然人手充足了能做的事情也就更多了 Node、数据可视化、组件库、部署规范、增量化发布 这些技术储备对于当前的我们来说是具有挑战性的… 毕竟房子也不是一个人能搭建起来的, 团队共同成长 也就顺水推舟了。</p>
+<p>我为什么要写博客?<br>
+啰嗦了大半天, 回到主题。<br>
+首先长期写博客对于个人来说有坏处吗?<br>
+没有!<br>
+那写博客的好处呢?<br>
+输入重要，输出同样重要。<br>
+不去输出，就不知道自己掌握到什么程度。也不知道自己掌握了多少。1</p>
+<p>现阶段的我如同我的博客名字&lt;电量不足&gt;<br>
+假如如果我连Vue都不太会用, 那还怎么以德服人(毕竟帅不能当饭吃)。<br>
+出门在外 碰上手机提示电量不足 想必很多人跟我一样特焦虑。<br>
+就如同当前的前端, 发展可以用日新月异来形容。<br>
+对我来说摆脱这种焦虑最好的办法就是 时刻给自己充电！</p>
+<h2 id="参考">参考 👇</h2>
+<p>前端早早聊|Scott - 如何在中小前端团队中完成管理转型</p>
+<!-- more -->
+<p>为什么那么多人愿意无偿分享知识？</p>
+]]></content>
+    </entry>
+</feed>
