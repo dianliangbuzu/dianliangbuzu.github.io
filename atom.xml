@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dianliangbuzu.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-08-24T09:55:09.697Z</updated>
+    <title>电量不足</title>
+    <updated>2020-08-25T08:25:04.040Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dianliangbuzu.github.io"/>
     <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>充电🔋小站</subtitle>
     <logo>https://dianliangbuzu.github.io/images/avatar.png</logo>
     <icon>https://dianliangbuzu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, 电量不足</rights>
     <entry>
         <title type="html"><![CDATA[谈谈我为什么要写博客]]></title>
         <id>https://dianliangbuzu.github.io/post/hello-gridea/</id>
