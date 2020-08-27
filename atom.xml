@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dianliangbuzu.github.io</id>
     <title>电量不足</title>
-    <updated>2020-08-27T02:49:43.008Z</updated>
+    <updated>2020-08-27T03:31:41.762Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dianliangbuzu.github.io"/>
     <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
@@ -25,10 +25,7 @@
         <link href="https://dianliangbuzu.github.io/post/hello-gridea/">
         </link>
         <updated>2020-04-04T22:00:04.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="起因">起因</h2>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="起因">起因</h2>
-<!-- more -->
 <p>2020年春节疫情的爆发, 开启了全民坐月子的大规模行动<br>
 (毕竟老老实实宅家中是我能为疫情做出的最大贡献了)</p>
 <p>每天的日常便是： 打开手机，查看疫情是否好转，最近进展。 偶尔也会跟朋友打打游戏、追番。 生活一停滞，时间久了我就变得异常焦虑，身边了解我的人都知道我其实是一个多虑的人。 我生活中扮演的角色是程序员, 确切的说是不入流的前端开发，因为计算机方面的知识很薄弱, 我是从Android 开发迈入这个行业的, 中途因为公司需要转的前端，为什么是前端呢?</p>
@@ -54,7 +51,6 @@
 对我来说摆脱这种焦虑最好的办法就是 时刻给自己充电！</p>
 <h2 id="参考">参考 👇</h2>
 <p>前端早早聊|Scott - 如何在中小前端团队中完成管理转型</p>
-<!-- more -->
 <p>为什么那么多人愿意无偿分享知识？</p>
 ]]></content>
     </entry>
