@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dianliangbuzu.github.io</id>
     <title>电量不足</title>
-    <updated>2020-08-27T04:00:43.951Z</updated>
+    <updated>2020-08-27T10:24:00.628Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dianliangbuzu.github.io"/>
     <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
@@ -10,6 +10,45 @@
     <logo>https://dianliangbuzu.github.io/images/avatar.png</logo>
     <icon>https://dianliangbuzu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 电量不足</rights>
+    <entry>
+        <title type="html"><![CDATA[Cordova - 打包IOS APP]]></title>
+        <id>https://dianliangbuzu.github.io/post/cordova-sheng-cheng-ios-app/</id>
+        <link href="https://dianliangbuzu.github.io/post/cordova-sheng-cheng-ios-app/">
+        </link>
+        <updated>2020-08-27T08:41:44.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>公司使用vue开发的h5应用,  目前已经上线了Android端。<br>
+由于市场的需要公众号端已经没法满足用户的需求。<br>
+了解现在前端打包的方案。但是最终还是选择了<a href="https://cordova.apache.org/">Cordova</a>(当然是因为以前用过🐝)</p>
+<h2 id="准备">准备</h2>
+<p>1.NPM安装Cordova</p>
+<pre><code>npm install -g cordova
+</code></pre>
+<p>2.创建项目</p>
+<pre><code>cordova create MyApp
+</code></pre>
+<p>3.添加平台(ios)</p>
+<pre><code>cd MyApp
+cordova platform add ios
+</code></pre>
+<p>项目目录结构</p>
+<pre><code>MyApp/
+|-- hooks/ 脚本代码, 用来自定义 Cordova CLI 命令
+|-- platforms/  平台源码
+| |-- ios/
+|-- plugins/ 提供javascript接口能够访问例如照相机和电池状态相关的事项。
+  | |--cordova-plugin-whitelist/
+  | |--browser.json
+  | |--fetch.json
+  | |--ios.json
+|--  res/
+  | |--icon/
+  | |--screen/
+|-- www/  HTML, JavaScript 和 CSS 文件
+|-- config.xml 在 config.xml 中定义的东西应该适应所有平台
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[写给27岁的自己]]></title>
         <id>https://dianliangbuzu.github.io/post/xie-gei-27-sui-de-zi-ji/</id>
