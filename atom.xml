@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://dianliangbuzu.github.io/blog/</id>
+    <id>https://dianliangbuzu.github.io</id>
     <title>电量不足</title>
-    <updated>2020-08-27T03:39:46.340Z</updated>
+    <updated>2020-08-27T03:44:24.325Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://dianliangbuzu.github.io/blog/"/>
-    <link rel="self" href="https://dianliangbuzu.github.io/blog/atom.xml"/>
+    <link rel="alternate" href="https://dianliangbuzu.github.io"/>
+    <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
     <subtitle>努力是对于更好生活的向往。</subtitle>
-    <logo>https://dianliangbuzu.github.io/blog/images/avatar.png</logo>
-    <icon>https://dianliangbuzu.github.io/blog/favicon.ico</icon>
+    <logo>https://dianliangbuzu.github.io/images/avatar.png</logo>
+    <icon>https://dianliangbuzu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 电量不足</rights>
     <entry>
         <title type="html"><![CDATA[写给27岁的自己]]></title>
-        <id>https://dianliangbuzu.github.io/blog/post/xie-gei-27-sui-de-zi-ji/</id>
-        <link href="https://dianliangbuzu.github.io/blog/post/xie-gei-27-sui-de-zi-ji/">
+        <id>https://dianliangbuzu.github.io/post/xie-gei-27-sui-de-zi-ji/</id>
+        <link href="https://dianliangbuzu.github.io/post/xie-gei-27-sui-de-zi-ji/">
         </link>
         <updated>2020-08-25T08:37:14.000Z</updated>
         <content type="html"><![CDATA[<p>马上就要27了，总想着写点什么， 留给未来的自己。</p>
@@ -21,8 +21,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[谈谈我为什么要写博客]]></title>
-        <id>https://dianliangbuzu.github.io/blog/post/hello-gridea/</id>
-        <link href="https://dianliangbuzu.github.io/blog/post/hello-gridea/">
+        <id>https://dianliangbuzu.github.io/post/hello-gridea/</id>
+        <link href="https://dianliangbuzu.github.io/post/hello-gridea/">
         </link>
         <updated>2020-04-04T22:00:04.000Z</updated>
         <content type="html"><![CDATA[<h2 id="起因">起因</h2>
