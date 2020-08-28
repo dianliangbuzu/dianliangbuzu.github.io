@@ -1,104 +1,137 @@
-
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>电量不足</title>
-<meta name="description" content="努力是对于更好生活的向往。">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598603825448">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    电量不足
+</title>
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598605982450">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dianliangbuzu.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://dianliangbuzu.github.io">
-        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598603825448" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://dianliangbuzu.github.io">
-        <h1 class="site-title">电量不足</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dianliangbuzu.github.io">
+                <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598605982450" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    电量不足
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
         
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://dianliangbuzu.github.io/post/cordova-sheng-cheng-ios-app/">
-        <h2 class="post-title">Cordova - 打包IOS APP</h2>
-      </a>
-      <div class="post-abstract">
-        <h2 id="前言">前言</h2>
-<p>公司使用vue开发的h5应用,  目前已经上线了Android端。<br>
-由于市场的需要公众号端已经没法满足用户的需求。<br>
-了解现在前端打包的方案。但是最终还是选择了<a href="https://cordova.apache.org/">Cordova</a>(当然是因为以前用过🐝)</p>
-<h2 id="概述">概述</h2>
-<p>Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。</p>
-<p>使用Apache Cordova的人群:</p>
-<pre><code>移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dianliangbuzu.github.io/cordova-ios-app/">
+                        Cordova - 打包IOS APP
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-08-27</time>
+                    
+                        <a href="https://dianliangbuzu.github.io/0C1SHnkCB/" class="post-tag i-tag
+                            i-tag-other_1">
+            #cordova
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://dianliangbuzu.github.io/cordova-ios-app/" class="post-feature-image" style="background-image:url(https://dianliangbuzu.github.io/post-images/cordova-ios-app.png) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            前言
+公司使用vue开发的h5应用,  目前已经上线了Android端。
+由于市场的需要公众号端已经没法满足用户的需求。
+了解现在前端打包的方案。但是最终还是选择了Cordova(当然是因为以前用过🐝)
+概述
+Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
+使用Apache Cordova的人群:
+移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
 web开发者，想包装部署自己的web App将其分发到各个应用商店门户。
 移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。
-</code></pre>
-<h2 id="开始">开始</h2>
-<p>1.NPM安装Cordova</p>
-<pre><code>npm install -g cordova
-</code></pre>
-<p>2.创建项目</p>
-<pre><code>cordova create MyApp
-</code></pre>
-<p>项目目录结构</p>
-<pre><code>MyApp/
+
+开始
+1.NPM安装Cordova
+npm install -g cordova
+
+2.创建项目
+cordova create MyApp
+
+项目目录结构
+MyApp/
 |-- hooks/ 脚本代码, 用来自定义 Cordova CLI 命令
 |-- platforms/  平台源码
 |-- plugins/ 提供javascript接口能够访问例如照相机和电池状态相关的事项。
@@ -111,160 +144,240 @@ web开发者，想包装部署自己的web App将其分发到各个应用商店�
   | |--screen/
 |-- www/  HTML, JavaScript 和 CSS 文件
 |-- config.xml 在 config.xml 中定义的东西应该适应所有平台
-</code></pre>
-<p>3.打包Vue项目<br>
-获取build后的 dist文件<br>
-复制dist中文件, 替换www文件</p>
-<p>4.添加平台(ios)</p>
-<pre><code>cd MyApp
+
+3.打包Vue项目
+获取build后的 dist文件
+复制dist中文件, 替换www文件
+4.添加平台(ios)
+cd MyApp
 cordova platform add ios
-</code></pre>
-<p>5.打包ios</p>
-<pre><code>cordova build ios
-</code></pre>
-<p><img src="https://dianliangbuzu.github.io/post-images/1598581264361.png" alt="" loading="lazy"><br>
-打包完成后 打开cordova目录 找到xcodeproj 用<a href="https://developer.apple.com/xcode/">Xcode</a>打开<br>
-<img src="https://dianliangbuzu.github.io/post-images/1598581417635.png" alt="" loading="lazy"><br>
-然后就可以要模拟器打开了或者手机运行了<br>
-<img src="https://dianliangbuzu.github.io/post-images/1598596259032.png" alt="" loading="lazy"></p>
-<h2 id="更改配置应用名称-应用图标-启动页">更改配置(应用名称、应用图标、启动页...)</h2>
-<p>打开config.xml<br>
-<img src="https://dianliangbuzu.github.io/post-images/1598596520412.png" alt="" loading="lazy"><br>
-1.更换APP名称</p>
-<pre><code> &lt;name&gt;HelloCordova&lt;/name&gt; // app名称
-</code></pre>
-<p>2.更换APP图标(IOS)<br>
-安装 cordova-res 裁剪生成图标</p>
-<pre><code>npm i -g cordova-res
-</code></pre>
-<p>根目录新建resources文件夹<br>
-放入图标跟启动页图片</p>
 
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-08-27</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
+5.打包ios
+cordova build ios
+
+
+打包完成后 打开cordova目录 找到xcodeproj 用Xcode打开
+
+然后就可以要模拟器打开了或者手机运行了
+
+更改配置(应用名称、应用图标、启动页...)
+打开config.xml
+
+1.更换APP名称
+ &amp;lt;name&amp;gt;HelloCordova&amp;lt;/name&amp;gt; // app名称
+
+2.更换APP图标(IOS)
+安装 cordova-res 裁剪生成图标
+npm i -g cordova-res
+
+根目录新建resources文件夹
+放入图标跟启动页图片
+resources/icon.(png|jpg) 必须至少为1024×1024px
+resources/splash.(png|jpg) 必须至少为2732×2732px
+resources/
+├── icon.png
+└── splash.png
+config.xml
+
+&amp;lt;platform name=&amp;quot;ios&amp;quot;&amp;gt;
+    &amp;lt;icon height=&amp;quot;57&amp;quot; src=&amp;quot;res/iconios/icon-57.png&amp;quot; width=&amp;quot;57&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;114&amp;quot; src=&amp;quot;res/icon/ios/icon-57@2x.png&amp;quot; width=&amp;quot;114&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;40&amp;quot; src=&amp;quot;res/icon/ios/icon-40.png&amp;quot; width=&amp;quot;40&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;80&amp;quot; src=&amp;quot;res/icon/ios/icon-40@2x.png&amp;quot; width=&amp;quot;80&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;50&amp;quot; src=&amp;quot;res/icon/ios/icon-50.png&amp;quot; width=&amp;quot;50&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;100&amp;quot; src=&amp;quot;res/icon/ios/icon-50@2x.png&amp;quot; width=&amp;quot;100&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;60&amp;quot; src=&amp;quot;res/icon/ios/icon-60.png&amp;quot; width=&amp;quot;60&amp;quot; /&amp;gt; 
+    &amp;lt;icon height=&amp;quot;120&amp;quot; src=&amp;quot;res/icon/ios/icon-60@2x.png&amp;quot; width=&amp;quot;120&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;180&amp;quot; src=&amp;quot;res/icon/ios/icon-60@3x.png&amp;quot; width=&amp;quot;180&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;72&amp;quot; src=&amp;quot;res/icon/ios/icon-72.png&amp;quot; width=&amp;quot;72&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;144&amp;quot; src=&amp;quot;res/icon/ios/icon-72@2x.png&amp;quot; width=&amp;quot;144&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;167&amp;quot; src=&amp;quot;res/icon/ios/icon-83.5@2x.png&amp;quot; width=&amp;quot;167&amp;quot; /&amp;gt;
+    &amp;lt;icon height=&amp;quot;1024&amp;quot; src=&amp;quot;res/icon/ios/icon-1024.png&amp;quot; width=&amp;quot;1024&amp;quot; /&amp;gt;
+&amp;lt;/platform&amp;gt;
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dianliangbuzu.github.io/cordova-ios-app/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
             
-              <a href="https://dianliangbuzu.github.io/tag/0C1SHnkCB/">
-                cordova
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dianliangbuzu.github.io/xie-gei-27-sui-de-zi-ji/">
+                        写给27岁的自己
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-08-25</time>
+                    
+                        <a href="https://dianliangbuzu.github.io/MDJMwwyVZ/" class="post-tag i-tag
+                            i-tag-warning">
+            #关于我
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            马上就要27了，总想着写点什么， 留给未来的自己。
+嗯。 太闲鱼了 没啥好总结的。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dianliangbuzu.github.io/xie-gei-27-sui-de-zi-ji/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dianliangbuzu.github.io/me/">
+                        谈谈我为什么要写博客
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-04-05</time>
+                    
+                        <a href="https://dianliangbuzu.github.io/MDJMwwyVZ/" class="post-tag i-tag
+                            i-tag-primary">
+            #关于我
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://dianliangbuzu.github.io/me/" class="post-feature-image" style="background-image:url(https://dianliangbuzu.github.io/post-images/me.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            起因
+2020年春节疫情的爆发, 开启了全民坐月子的大规模行动
+(毕竟老老实实宅家中是我能为疫情做出的最大贡献了)
+每天的日常便是： 打开手机，查看疫情是否好转，最近进展。 偶尔也会跟朋友打打游戏、追番。 生活一停滞，时间久了我就变得异常焦虑，身边了解我的人都知道我其实是一个多虑的人。 我生活中扮演的角色是程序员, 确切的说是不入流的前端开发，因为计算机方面的知识很薄弱, 我是从Android 开发迈入这个行业的, 中途因为公司需要转的前端，为什么是前端呢?
+凡是可以用 JavaScript 来写的应用，最终都会用 JavaScript 来写。——Atwood定律(Jeff Atwood在2007年提出) (其实就是节省公司开发成本啦)
+更多的时候我是现搜现做(基于搜索引擎编程)， 当然最终项目也能符合公司需求按时交付，毕竟我也是名有态度的调包选手,就这样摸爬滚打到了现在。
+现状
+2018年加入了现在公司，到现在也将近两年了。2019年底就被Leader叫到办公室, 让我负责整个前端小组, 问我有什么看法?
+当时我内心蹦出的第一个念头是: 我想。
+其实在过去的一年, 或多或少我都在扮演这个角色，当然以往的我陷入了一个误区，就是把有挑战、有难度的活都揽在手上。把最基本的业务都交给大家, 甚至一个跟我相处时间最长的同事, 我把很多杂事都交给他人处理, 久而久之就把大家的耐心都消失殆尽了。如果换位思考我估计熬不住吧, 写业务半年、一年下来对于成长来说其实是很危险的一件事, 如果让大家都参与项目基建参与较为复杂、有挑战性的工作才会持续保持激情。
+随着公司的迅速发展, 前端组成也由最初的两人到如今7人小组, 对于一个初创型公司来说前端占比已经不低了。
+当然人手充足了能做的事情也就更多了 Node、数据可视化、组件库、部署规范、增量化发布 这些技术储备对于当前的我们来说是具有挑战性的… 毕竟房子也不是一个人能搭建起来的, 团队共同成长 也就顺水推舟了。
+我为什么要写博客?
+啰嗦了大半天, 回到主题。
+首先长期写博客对于个人来说有坏处吗?
+没有!
+那写博客的好处呢?
+输入重要，输出同样重要。
+不去输出，就不知道自己掌握到什么程度。也不知道自己掌握了多少。1
+现阶段的我如同我的博客名字&amp;lt;电量不足&amp;gt;
+假如如果我连Vue都不太会用, 那还怎么以德服人(毕竟帅不能当饭吃)。
+出门在外 碰上手机提示电量不足 想必很多人跟我一样特焦虑。
+就如同当前的前端, 发展可以用日新月异来形容。
+对我来说摆脱这种焦虑最好的办法就是 时刻给自己充电！
+参考 👇
+前端早早聊|Scott - 如何在中小前端团队中完成管理转型
+为什么那么多人愿意无偿分享知识？
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dianliangbuzu.github.io/me/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://dianliangbuzu.github.io/about/">
+                        关于
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-01-25</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+欢迎来到我的小站呀，很高兴遇见你！🤝
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://dianliangbuzu.github.io/about/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
                 
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://dianliangbuzu.github.io/post/cordova-sheng-cheng-ios-app/">
-        <div class="feature-container" style="background-image: url('https://dianliangbuzu.github.io/post-images/cordova-sheng-cheng-ios-app.png')">
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://dianliangbuzu.github.io/images/avatar.png?v=1598605982450)">
         </div>
-      </a>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://dianliangbuzu.github.io/post/xie-gei-27-sui-de-zi-ji/">
-        <h2 class="post-title">写给27岁的自己</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-08-25</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
+        <h1 class="id_card-title">
+            电量不足
+        </h1>
+        <h2 class="id_card-description">
+            努力是对于更好生活的向往。
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
             
-              <a href="https://dianliangbuzu.github.io/tag/MDJMwwyVZ/">
-                关于我
+                <a href="https://github.com/dianliangbuzu" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
                 
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://dianliangbuzu.github.io/post/hello-gridea/">
-        <h2 class="post-title">谈谈我为什么要写博客</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2020-04-05</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://dianliangbuzu.github.io/tag/MDJMwwyVZ/">
-                关于我
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-      <a href="https://dianliangbuzu.github.io/post/hello-gridea/">
-        <div class="feature-container" style="background-image: url('https://dianliangbuzu.github.io/post-images/hello-gridea.jpg')">
         </div>
-      </a>
+    </div>
     
-  </section>
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
 
 
-<div class="pagination-container">
-  
-  
+
+            <div class="site-footer">
+  Powered by Gridea | 
+  <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-      </div>
-
-      <div class="site-footer">
-  <div class="slogan">努力是对于更好生活的向往。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by Gridea | <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
 
-
-
-  </body>
 </html>

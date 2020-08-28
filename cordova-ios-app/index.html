@@ -1,0 +1,286 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Cordova - 打包IOS APP | 电量不足
+</title>
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598605982450">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://dianliangbuzu.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://dianliangbuzu.github.io">
+                <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598605982450" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    电量不足
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Cordova - 打包IOS APP
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-08-27</time>
+                            
+                                <a href="https://dianliangbuzu.github.io/0C1SHnkCB/" class="post-tag i-tag
+                            i-tag-error">
+                            #cordova
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://dianliangbuzu.github.io/post-images/cordova-ios-app.png')"></div>
+                            
+                                <div class="post-content">
+                                    <h2 id="前言">前言</h2>
+<p>公司使用vue开发的h5应用,  目前已经上线了Android端。<br>
+由于市场的需要公众号端已经没法满足用户的需求。<br>
+了解现在前端打包的方案。但是最终还是选择了<a href="https://cordova.apache.org/">Cordova</a>(当然是因为以前用过🐝)</p>
+<h2 id="概述">概述</h2>
+<p>Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。</p>
+<p>使用Apache Cordova的人群:</p>
+<pre><code>移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+web开发者，想包装部署自己的web App将其分发到各个应用商店门户。
+移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。
+</code></pre>
+<h2 id="开始">开始</h2>
+<p>1.NPM安装Cordova</p>
+<pre><code>npm install -g cordova
+</code></pre>
+<p>2.创建项目</p>
+<pre><code>cordova create MyApp
+</code></pre>
+<p>项目目录结构</p>
+<pre><code>MyApp/
+|-- hooks/ 脚本代码, 用来自定义 Cordova CLI 命令
+|-- platforms/  平台源码
+|-- plugins/ 提供javascript接口能够访问例如照相机和电池状态相关的事项。
+  | |--cordova-plugin-whitelist/
+  | |--browser.json
+  | |--fetch.json
+  | |--ios.json
+|--  res/
+  | |--icon/
+  | |--screen/
+|-- www/  HTML, JavaScript 和 CSS 文件
+|-- config.xml 在 config.xml 中定义的东西应该适应所有平台
+</code></pre>
+<p>3.打包Vue项目<br>
+获取build后的 dist文件<br>
+复制dist中文件, 替换www文件</p>
+<p>4.添加平台(ios)</p>
+<pre><code>cd MyApp
+cordova platform add ios
+</code></pre>
+<p>5.打包ios</p>
+<pre><code>cordova build ios
+</code></pre>
+<p><img src="https://dianliangbuzu.github.io/post-images/1598605629326.png" alt="" loading="lazy"><br>
+打包完成后 打开cordova目录 找到xcodeproj 用<a href="https://developer.apple.com/xcode/">Xcode</a>打开<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598605784064.png" alt="" loading="lazy"><br>
+然后就可以要模拟器打开了或者手机运行了<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598605670898.png" alt="" loading="lazy"></p>
+<h2 id="更改配置应用名称-应用图标-启动页">更改配置(应用名称、应用图标、启动页...)</h2>
+<p>打开config.xml<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598605797074.png" alt="" loading="lazy"><br>
+1.更换APP名称</p>
+<pre><code> &lt;name&gt;HelloCordova&lt;/name&gt; // app名称
+</code></pre>
+<p>2.更换APP图标(IOS)<br>
+安装 cordova-res 裁剪生成图标</p>
+<pre><code>npm i -g cordova-res
+</code></pre>
+<p>根目录新建resources文件夹<br>
+放入图标跟启动页图片</p>
+<p>resources/icon.(png|jpg) 必须至少为1024×1024px<br>
+resources/splash.(png|jpg) 必须至少为2732×2732px</p>
+<pre><code>resources/
+├── icon.png
+└── splash.png
+config.xml
+</code></pre>
+<pre><code>&lt;platform name=&quot;ios&quot;&gt;
+    &lt;icon height=&quot;57&quot; src=&quot;res/iconios/icon-57.png&quot; width=&quot;57&quot; /&gt;
+    &lt;icon height=&quot;114&quot; src=&quot;res/icon/ios/icon-57@2x.png&quot; width=&quot;114&quot; /&gt;
+    &lt;icon height=&quot;40&quot; src=&quot;res/icon/ios/icon-40.png&quot; width=&quot;40&quot; /&gt;
+    &lt;icon height=&quot;80&quot; src=&quot;res/icon/ios/icon-40@2x.png&quot; width=&quot;80&quot; /&gt;
+    &lt;icon height=&quot;50&quot; src=&quot;res/icon/ios/icon-50.png&quot; width=&quot;50&quot; /&gt;
+    &lt;icon height=&quot;100&quot; src=&quot;res/icon/ios/icon-50@2x.png&quot; width=&quot;100&quot; /&gt;
+    &lt;icon height=&quot;60&quot; src=&quot;res/icon/ios/icon-60.png&quot; width=&quot;60&quot; /&gt; 
+    &lt;icon height=&quot;120&quot; src=&quot;res/icon/ios/icon-60@2x.png&quot; width=&quot;120&quot; /&gt;
+    &lt;icon height=&quot;180&quot; src=&quot;res/icon/ios/icon-60@3x.png&quot; width=&quot;180&quot; /&gt;
+    &lt;icon height=&quot;72&quot; src=&quot;res/icon/ios/icon-72.png&quot; width=&quot;72&quot; /&gt;
+    &lt;icon height=&quot;144&quot; src=&quot;res/icon/ios/icon-72@2x.png&quot; width=&quot;144&quot; /&gt;
+    &lt;icon height=&quot;167&quot; src=&quot;res/icon/ios/icon-83.5@2x.png&quot; width=&quot;167&quot; /&gt;
+    &lt;icon height=&quot;1024&quot; src=&quot;res/icon/ios/icon-1024.png&quot; width=&quot;1024&quot; /&gt;
+&lt;/platform&gt;
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://dianliangbuzu.github.io/xie-gei-27-sui-de-zi-ji/">
+                                <h3 class="post-title">
+                                    写给27岁的自己
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E5%BC%80%E5%A7%8B">开始</a></li>
+<li><a href="#%E6%9B%B4%E6%94%B9%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%90%8D%E7%A7%B0-%E5%BA%94%E7%94%A8%E5%9B%BE%E6%A0%87-%E5%90%AF%E5%8A%A8%E9%A1%B5">更改配置(应用名称、应用图标、启动页...)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by Gridea | 
+  <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
