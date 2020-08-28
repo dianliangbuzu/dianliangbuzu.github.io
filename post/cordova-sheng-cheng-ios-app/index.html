@@ -12,10 +12,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598584114978">
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598603825448">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -30,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://dianliangbuzu.github.io">
-        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598584114978" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598603825448" alt="" width="32px" height="32px">
       </a>
       <a href="https://dianliangbuzu.github.io">
         <h1 class="site-title">电量不足</h1>
@@ -74,7 +80,7 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://dianliangbuzu.github.io/post-images/cordova-sheng-cheng-ios-app.jpg')">
+            <div class="feature-container" style="background-image: url('https://dianliangbuzu.github.io/post-images/cordova-sheng-cheng-ios-app.png')">
             </div>
           
           <h2 class="post-title">Cordova - 打包IOS APP</h2>
@@ -138,7 +144,47 @@ cordova platform add ios
 </code></pre>
 <p><img src="https://dianliangbuzu.github.io/post-images/1598581264361.png" alt="" loading="lazy"><br>
 打包完成后 打开cordova目录 找到xcodeproj 用<a href="https://developer.apple.com/xcode/">Xcode</a>打开<br>
-<img src="https://dianliangbuzu.github.io/post-images/1598581417635.png" alt="" loading="lazy"></p>
+<img src="https://dianliangbuzu.github.io/post-images/1598581417635.png" alt="" loading="lazy"><br>
+然后就可以要模拟器打开了或者手机运行了<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598596259032.png" alt="" loading="lazy"></p>
+<h2 id="更改配置应用名称-应用图标-启动页">更改配置(应用名称、应用图标、启动页...)</h2>
+<p>打开config.xml<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598596520412.png" alt="" loading="lazy"><br>
+1.更换APP名称</p>
+<pre><code> &lt;name&gt;HelloCordova&lt;/name&gt; // app名称
+</code></pre>
+<p>2.更换APP图标(IOS)<br>
+安装 cordova-res 裁剪生成图标</p>
+<pre><code>npm i -g cordova-res
+</code></pre>
+<p>根目录新建resources文件夹<br>
+放入图标跟启动页图片</p>
+<!-- more -->
+<p>resources/icon.(png|jpg) 必须至少为1024×1024px<br>
+resources/splash.(png|jpg) 必须至少为2732×2732px</p>
+<pre><code>resources/
+├── icon.png
+└── splash.png
+config.xml
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dianliangbuzu.github.io/post-images/1598597582438.png" alt="" loading="lazy"></figure>
+<pre><code>&lt;platform name=&quot;ios&quot;&gt;
+    &lt;icon height=&quot;57&quot; src=&quot;res/iconios/icon-57.png&quot; width=&quot;57&quot; /&gt;
+    &lt;icon height=&quot;114&quot; src=&quot;res/icon/ios/icon-57@2x.png&quot; width=&quot;114&quot; /&gt;
+    &lt;icon height=&quot;40&quot; src=&quot;res/icon/ios/icon-40.png&quot; width=&quot;40&quot; /&gt;
+    &lt;icon height=&quot;80&quot; src=&quot;res/icon/ios/icon-40@2x.png&quot; width=&quot;80&quot; /&gt;
+    &lt;icon height=&quot;50&quot; src=&quot;res/icon/ios/icon-50.png&quot; width=&quot;50&quot; /&gt;
+    &lt;icon height=&quot;100&quot; src=&quot;res/icon/ios/icon-50@2x.png&quot; width=&quot;100&quot; /&gt;
+    &lt;icon height=&quot;60&quot; src=&quot;res/icon/ios/icon-60.png&quot; width=&quot;60&quot; /&gt; 
+    &lt;icon height=&quot;120&quot; src=&quot;res/icon/ios/icon-60@2x.png&quot; width=&quot;120&quot; /&gt;
+    &lt;icon height=&quot;180&quot; src=&quot;res/icon/ios/icon-60@3x.png&quot; width=&quot;180&quot; /&gt;
+    &lt;icon height=&quot;72&quot; src=&quot;res/icon/ios/icon-72.png&quot; width=&quot;72&quot; /&gt;
+    &lt;icon height=&quot;144&quot; src=&quot;res/icon/ios/icon-72@2x.png&quot; width=&quot;144&quot; /&gt;
+    &lt;icon height=&quot;167&quot; src=&quot;res/icon/ios/icon-83.5@2x.png&quot; width=&quot;167&quot; /&gt;
+    &lt;icon height=&quot;1024&quot; src=&quot;res/icon/ios/icon-1024.png&quot; width=&quot;1024&quot; /&gt;
+&lt;/platform&gt;
+</code></pre>
+<p>3.添加启动页</p>
 
           </div>
         </div>
@@ -154,6 +200,12 @@ cordova platform add ios
           
       </div>
 
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
       
 
       <div class="site-footer">
@@ -188,6 +240,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '6419e2889a98b0762940',
+        clientSecret: '4210e757cb157b01181f7e1e7e0af48eb86d0c74',
+        repo: 'dianliangbuzu',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
