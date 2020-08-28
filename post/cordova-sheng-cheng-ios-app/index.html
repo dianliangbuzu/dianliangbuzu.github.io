@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598524586610">
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598584114978">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://dianliangbuzu.github.io">
-        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598524586610" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598584114978" alt="" width="32px" height="32px">
       </a>
       <a href="https://dianliangbuzu.github.io">
         <h1 class="site-title">电量不足</h1>
@@ -97,22 +97,24 @@
 <p>公司使用vue开发的h5应用,  目前已经上线了Android端。<br>
 由于市场的需要公众号端已经没法满足用户的需求。<br>
 了解现在前端打包的方案。但是最终还是选择了<a href="https://cordova.apache.org/">Cordova</a>(当然是因为以前用过🐝)</p>
-<h2 id="准备">准备</h2>
+<h2 id="概述">概述</h2>
+<p>Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。</p>
+<p>使用Apache Cordova的人群:</p>
+<pre><code>移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+web开发者，想包装部署自己的web App将其分发到各个应用商店门户。
+移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。
+</code></pre>
+<h2 id="开始">开始</h2>
 <p>1.NPM安装Cordova</p>
 <pre><code>npm install -g cordova
 </code></pre>
 <p>2.创建项目</p>
 <pre><code>cordova create MyApp
 </code></pre>
-<p>3.添加平台(ios)</p>
-<pre><code>cd MyApp
-cordova platform add ios
-</code></pre>
 <p>项目目录结构</p>
 <pre><code>MyApp/
 |-- hooks/ 脚本代码, 用来自定义 Cordova CLI 命令
 |-- platforms/  平台源码
-| |-- ios/
 |-- plugins/ 提供javascript接口能够访问例如照相机和电池状态相关的事项。
   | |--cordova-plugin-whitelist/
   | |--browser.json
@@ -124,6 +126,19 @@ cordova platform add ios
 |-- www/  HTML, JavaScript 和 CSS 文件
 |-- config.xml 在 config.xml 中定义的东西应该适应所有平台
 </code></pre>
+<p>3.打包Vue项目<br>
+获取build后的 dist文件<br>
+复制dist中文件, 替换www文件</p>
+<p>4.添加平台(ios)</p>
+<pre><code>cd MyApp
+cordova platform add ios
+</code></pre>
+<p>5.打包ios</p>
+<pre><code>cordova build ios
+</code></pre>
+<p><img src="https://dianliangbuzu.github.io/post-images/1598581264361.png" alt="" loading="lazy"><br>
+打包完成后 打开cordova目录 找到xcodeproj 用<a href="https://developer.apple.com/xcode/">Xcode</a>打开<br>
+<img src="https://dianliangbuzu.github.io/post-images/1598581417635.png" alt="" loading="lazy"></p>
 
           </div>
         </div>
@@ -156,7 +171,7 @@ cordova platform add ios
       
     
   </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
+  Powered by Gridea | <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 
