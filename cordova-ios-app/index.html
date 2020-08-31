@@ -7,7 +7,7 @@
 <title>
     Cordova - 打包IOS APP | 电量不足
 </title>
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598605982450">
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598841886223">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -20,6 +20,13 @@
 
 
         
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
+
+                    
+                            
 </head>
 
 <body>
@@ -28,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://dianliangbuzu.github.io">
-                <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598605982450" alt="">
+                <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598841886223" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -58,7 +65,7 @@
                                 
                     
                             <li>
-                                <a href="/post/about" class="menu">
+                                <a href="/about" class="menu">
                                     关于
                                 </a>
                             </li>
@@ -97,7 +104,7 @@
                             <time class="post-time">2020-08-27</time>
                             
                                 <a href="https://dianliangbuzu.github.io/0C1SHnkCB/" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-primary">
                             #cordova
                         </a>
                                 
@@ -281,6 +288,26 @@ config.xml
         });
     </script>
     
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '6419e2889a98b0762940',
+            clientSecret: '4210e757cb157b01181f7e1e7e0af48eb86d0c74',
+            repo: 'dianliangbuzu',
+            owner: '',
+            admin: [''],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
+
+                    
+                                
 </body>
 
 </html>
