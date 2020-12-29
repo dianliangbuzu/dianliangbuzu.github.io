@@ -1,278 +1,124 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    cordova | 电量不足
-</title>
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1598842457739">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://dianliangbuzu.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-
-
+    <meta charset="UTF-8">
+    <title>电量不足</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <link rel="stylesheet" href="/media/live2d/css/live2d.css" />
+    
 </head>
+<body class=" mdui-appbar-with-toolbar  mdui-theme-primary-pink mdui-theme-accent-pink">
+        <header class="mdui-toolbar mdui-color-pink mdui-appbar-fixed mdui-appbar-scroll-toolbar-hide" style="z-index: 1000">
+    <a href="javascript:;" mdui-drawer="{target: '#left-drawer',overlay:true}" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+    <span class="mdui-typo-title">电量不足</span>
+    <div class="mdui-toolbar-spacer"></div>
+<!--    <a href="javascript:history.go(0);" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+</header>
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://dianliangbuzu.github.io">
-                <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1598842457739" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    电量不足
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
-    <div class="i-card">
-        <b>标签：#
-        cordova</b>
-    </div>
-    
+        <div class="mdui-drawer mdui-color-white mdui-drawer-full-height mdui-drawer-close" id="left-drawer">
+    <ul class="mdui-list">
+        <li class="mdui-subheader">菜单</li>
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://dianliangbuzu.github.io/cordova-ios-app/">
-                        Cordova - 打包IOS APP
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2020-08-27</time>
+        <li class="mdui-list-item mdui-ripple">
+            <a href="/archives" class="mdui-list-item-content">归档</a>
+        </li>
+        
+        <li class="mdui-list-item mdui-ripple">
+            <a href="/tags" class="mdui-list-item-content">标签</a>
+        </li>
+        
+        <li class="mdui-list-item mdui-ripple">
+            <a href="/about" class="mdui-list-item-content">关于</a>
+        </li>
+        
+    </ul>
+</div>
+
+        <div class="mdui-container">
+            <div class="mdui-row mdui-row-gapless">
+                <div class="k-container">
+                    <div class="head_card-offset"></div>
                     
-                        <a href="https://dianliangbuzu.github.io/0C1SHnkCB/" class="post-tag i-tag
-                            i-tag-other_1">
-            #cordova
-        </a>
-                        
+    <div class="mdui-card">
+        <div class="mdui-card-media">
+            <img src="https://dianliangbuzu.github.io/post-images/cordova-ios-app.png"/>
+            <div class="mdui-card-media-covered">
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">Cordova - 打包IOS APP</div>
+                    <div class="mdui-card-primary-subtitle"></div>
                 </div>
-                <div class="post-article">
-                    
-                        <a href="https://dianliangbuzu.github.io/cordova-ios-app/" class="post-feature-image" style="background-image:url(https://dianliangbuzu.github.io/post-images/cordova-ios-app.png) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            前言
-公司使用vue开发的h5应用,  目前已经上线了Android端。
-由于市场的需要公众号端已经没法满足用户的需求。
-了解现在前端打包的方案。但是最终还是选择了Cordova(当然是因为以前用过🐝)
-概述
-Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
-使用Apache Cordova的人群:
-移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
-web开发者，想包装部署自己的web App将其分发到各个应用商店门户。
-移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。
-
-开始
-1.NPM安装Cordova
-npm install -g cordova
-
-2.创建项目
-cordova create MyApp
-
-项目目录结构
-MyApp/
-|-- hooks/ 脚本代码, 用来自定义 Cordova CLI 命令
-|-- platforms/  平台源码
-|-- plugins/ 提供javascript接口能够访问例如照相机和电池状态相关的事项。
-  | |--cordova-plugin-whitelist/
-  | |--browser.json
-  | |--fetch.json
-  | |--ios.json
-|--  res/
-  | |--icon/
-  | |--screen/
-|-- www/  HTML, JavaScript 和 CSS 文件
-|-- config.xml 在 config.xml 中定义的东西应该适应所有平台
-
-3.打包Vue项目
-获取build后的 dist文件
-复制dist中文件, 替换www文件
-4.添加平台(ios)
-cd MyApp
-cordova platform add ios
-
-5.打包ios
-cordova build ios
-
-
-打包完成后 打开cordova目录 找到xcodeproj 用Xcode打开
-
-然后就可以要模拟器打开了或者手机运行了
-
-更改配置(应用名称、应用图标、启动页...)
-打开config.xml
-
-1.更换APP名称
- &amp;lt;name&amp;gt;HelloCordova&amp;lt;/name&amp;gt; // app名称
-
-2.更换APP图标(IOS)
-安装 cordova-res 裁剪生成图标
-npm i -g cordova-res
-
-根目录新建resources文件夹
-放入图标跟启动页图片
-resources/icon.(png|jpg) 必须至少为1024×1024px
-resources/splash.(png|jpg) 必须至少为2732×2732px
-resources/
-├── icon.png
-└── splash.png
-config.xml
-
-&amp;lt;platform name=&amp;quot;ios&amp;quot;&amp;gt;
-    &amp;lt;icon height=&amp;quot;57&amp;quot; src=&amp;quot;res/iconios/icon-57.png&amp;quot; width=&amp;quot;57&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;114&amp;quot; src=&amp;quot;res/icon/ios/icon-57@2x.png&amp;quot; width=&amp;quot;114&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;40&amp;quot; src=&amp;quot;res/icon/ios/icon-40.png&amp;quot; width=&amp;quot;40&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;80&amp;quot; src=&amp;quot;res/icon/ios/icon-40@2x.png&amp;quot; width=&amp;quot;80&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;50&amp;quot; src=&amp;quot;res/icon/ios/icon-50.png&amp;quot; width=&amp;quot;50&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;100&amp;quot; src=&amp;quot;res/icon/ios/icon-50@2x.png&amp;quot; width=&amp;quot;100&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;60&amp;quot; src=&amp;quot;res/icon/ios/icon-60.png&amp;quot; width=&amp;quot;60&amp;quot; /&amp;gt; 
-    &amp;lt;icon height=&amp;quot;120&amp;quot; src=&amp;quot;res/icon/ios/icon-60@2x.png&amp;quot; width=&amp;quot;120&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;180&amp;quot; src=&amp;quot;res/icon/ios/icon-60@3x.png&amp;quot; width=&amp;quot;180&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;72&amp;quot; src=&amp;quot;res/icon/ios/icon-72.png&amp;quot; width=&amp;quot;72&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;144&amp;quot; src=&amp;quot;res/icon/ios/icon-72@2x.png&amp;quot; width=&amp;quot;144&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;167&amp;quot; src=&amp;quot;res/icon/ios/icon-83.5@2x.png&amp;quot; width=&amp;quot;167&amp;quot; /&amp;gt;
-    &amp;lt;icon height=&amp;quot;1024&amp;quot; src=&amp;quot;res/icon/ios/icon-1024.png&amp;quot; width=&amp;quot;1024&amp;quot; /&amp;gt;
-&amp;lt;/platform&amp;gt;
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://dianliangbuzu.github.io/cordova-ios-app/">Read More ~</a>
-                            </div>
+                <div class="mdui-card-actions" style="float:right;">
+                    <a href="https://dianliangbuzu.github.io/cordova-ios-app/" class="mdui-btn mdui-ripple mdui-ripple-white">点击查看</a>
                 </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
-
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://dianliangbuzu.github.io/images/avatar.png?v=1598842457739)">
-        </div>
-        <h1 class="id_card-title">
-            电量不足
-        </h1>
-        <h2 class="id_card-description">
-            努力是对于更好生活的向往。
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
-
+            </div>
         </div>
     </div>
-    
+    <div class="head_card-offset"></div>
 
-                        <!-- 公告栏 -->
-                        
-    <div class="notice-card i-card ">
-        <div class="notice-title i-card-title">公告</div>
-        <div class="notice-content">
-            爱如空气
-        </div>
-    </div>
-    
 
                 </div>
             </div>
+            <div class="mdui-row mdui-row-gapless">
+                <div class="k-container">
+                    
 
-
-
-            <div class="site-footer">
-  Powered by Gridea | 
-  <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
+                </div>
+            </div>
+        </div>
+        <footer class="mdui-container footer ">
+    <div class="head_card-offset"></div>
+    <div class="mdui-row mdui-row-gapless">
+        <div class="k-container">
+            <img width="100%" src="/media/img/skirt.png">
+        </div>
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
 
+    <div class="site-info">
+        Powered by Gridea
+    </div>
+</footer>
+<div id="landlord" style="left:5px;bottom:0px;">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+        <div class="live_talk_input_name_body">
+            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+        </div>
+        <div class="live_talk_input_text_body">
+            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+        </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+        <div class="live_ico_item type_info" id="showInfoBtn"></div>
+        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+        <div class="live_ico_item type_music" id="musicButton"></div>
+        <div class="live_ico_item type_youdu" id="youduButton"></div>
+        <div class="live_ico_item type_quit" id="hideButton"></div>
+        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+        <input name="live2dBGM" value="https://img.apa70.com/123.mp3" type="hidden">
+        <input name="live2dBGM" value="https://img.apa70.com/123.mp3" type="hidden">
+        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
+    </div>
+</div>
+<div id="open_live2d">召唤伊斯特瓦尔</div>
+<script>
+    var message_Path = '/media/live2d/';//资源目录，如果目录不对请更改
+    var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
+</script>
+<!--<script src="/media/js/jquery-3.3.1.min.js"></script>-->
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/media/live2d/js/message.js"></script>
+
+    </body>
+<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
 </html>
