@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dianliangbuzu.github.io</id>
     <title>电量不足</title>
-    <updated>2020-12-29T03:30:02.865Z</updated>
+    <updated>2020-12-29T07:29:21.237Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dianliangbuzu.github.io"/>
     <link rel="self" href="https://dianliangbuzu.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://dianliangbuzu.github.io/images/avatar.png</logo>
     <icon>https://dianliangbuzu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 电量不足</rights>
+    <entry>
+        <title type="html"><![CDATA[Electron 启动动画]]></title>
+        <id>https://dianliangbuzu.github.io/electron-qi-dong-dong-hua/</id>
+        <link href="https://dianliangbuzu.github.io/electron-qi-dong-dong-hua/">
+        </link>
+        <updated>2020-12-29T06:08:34.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Cordova - 打包IOS APP]]></title>
         <id>https://dianliangbuzu.github.io/cordova-ios-app/</id>
