@@ -1,97 +1,105 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>谈谈我为什么要写博客 | 电量不足</title>
-<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1609228365530">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="努力是对于更好生活的向往。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dianliangbuzu.github.io/favicon.ico?v=1609297014137">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://dianliangbuzu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="谈谈我为什么要写博客 | 电量不足 - Atom Feed" href="https://dianliangbuzu.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="起因
-2020年春节疫情的爆发, 开启了全民坐月子的大规模行动
-(毕竟老老实实宅家中是我能为疫情做出的最大贡献了)
-每天的日常便是： 打开手机，查看疫情是否好转，最近进展。 偶尔也会跟朋友打打游戏、追番。 生活一停滞，时间久了我就变得异常焦..." />
-    <meta name="keywords" content="关于我" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://dianliangbuzu.github.io">
-  <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1609228365530" alt="">
-  </a>
-  <h1 class="site-title">
-    电量不足
-  </h1>
-  <p class="site-description">
-    努力是对于更好生活的向往。
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://dianliangbuzu.github.io">
+        <img class="avatar" src="https://dianliangbuzu.github.io/images/avatar.png?v=1609297014137" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://dianliangbuzu.github.io">
+        <h1 class="site-title">电量不足</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              谈谈我为什么要写博客
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-04-05
-              </span>
-              <span>
-                4 min read
-              </span>
-              
-                <a href="https://dianliangbuzu.github.io/MDJMwwyVZ/" class="post-tag">
-                  # 关于我
-                </a>
-              
+          
+            <div class="feature-container" style="background-image: url('https://dianliangbuzu.github.io/post-images/me.jpg')">
             </div>
+          
+          <h2 class="post-title">谈谈我为什么要写博客</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-04-05</span>
             
-              <img class="post-feature-image" src="https://dianliangbuzu.github.io/post-images/me.jpg" alt="">
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://dianliangbuzu.github.io/MDJMwwyVZ/">
+                    关于我
+                    
+                  </a>
+                
+              </span>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="起因">起因</h2>
+          </div>
+          <div class="post-content">
+            <h2 id="起因">起因</h2>
 <p>2020年春节疫情的爆发, 开启了全民坐月子的大规模行动<br>
 (毕竟老老实实宅家中是我能为疫情做出的最大贡献了)</p>
 <p>每天的日常便是： 打开手机，查看疫情是否好转，最近进展。 偶尔也会跟朋友打打游戏、追番。 生活一停滞，时间久了我就变得异常焦虑，身边了解我的人都知道我其实是一个多虑的人。 我生活中扮演的角色是程序员, 确切的说是不入流的前端开发，因为计算机方面的知识很薄弱, 我是从Android 开发迈入这个行业的, 中途因为公司需要转的前端，为什么是前端呢?</p>
@@ -119,102 +127,78 @@
 <p>前端早早聊|Scott - 如何在中小前端团队中完成管理转型</p>
 <p>为什么那么多人愿意无偿分享知识？</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E8%B5%B7%E5%9B%A0">起因</a></li>
-<li><a href="#%E7%8E%B0%E7%8A%B6">现状</a></li>
-<li><a href="#%E5%8F%82%E8%80%83">参考 👇</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
         
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
 
         
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      
 
-<div id="gitalk-container"></div>
+      <div class="site-footer">
+  <div class="slogan">努力是对于更好生活的向往。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by Gridea | <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">RSS</a>
+</div>
 
-<script>
 
-  var gitalk = new Gitalk({
-    clientID: '7637ad8597ba4bb752dc',
-    clientSecret: '36e51ec8f4b2c2d4d03e97078edd7c96d371da6f',
-    repo: 'dianliangbuzu',
-    owner: '',
-    admin: [''],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
+    </div>
+    <script type="application/javascript">
 
-  gitalk.render('gitalk-container')
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
-          
 
-          
-        
 
-        <div class="site-footer">
-  Powered by Gridea
-  <a class="rss" href="https://dianliangbuzu.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
-    </div>
-
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-      hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+      var gitalk = new Gitalk({
+        clientID: '7637ad8597ba4bb752dc',
+        clientSecret: '36e51ec8f4b2c2d4d03e97078edd7c96d371da6f',
+        repo: 'dianliangbuzu',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+      gitalk.render('gitalk-container')
 
     </script>
+  
+
+  
+
+
+
+
   </body>
 </html>
