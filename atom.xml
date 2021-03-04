@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://llllchyi.github.io</id>
     <title>电量不足的小站</title>
-    <updated>2021-03-04T01:08:47.972Z</updated>
+    <updated>2021-03-04T01:13:44.946Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://llllchyi.github.io"/>
     <link rel="self" href="https://llllchyi.github.io/atom.xml"/>
@@ -10,13 +10,6 @@
     <logo>https://llllchyi.github.io/images/avatar.png</logo>
     <icon>https://llllchyi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 电量不足的小站</rights>
-    <entry>
-        <title type="html"><![CDATA[聊一聊Promise]]></title>
-        <id>https://llllchyi.github.io/liao-yi-liao-promise/</id>
-        <link href="https://llllchyi.github.io/liao-yi-liao-promise/">
-        </link>
-        <updated>2021-01-26T03:55:36.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Electron 启动动画]]></title>
         <id>https://llllchyi.github.io/electron-qi-dong-dong-hua/</id>
@@ -30,13 +23,6 @@
         <link href="https://llllchyi.github.io/cordova-ios-app/">
         </link>
         <updated>2020-08-27T08:41:44.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[写给27岁的自己]]></title>
-        <id>https://llllchyi.github.io/xie-gei-27-sui-de-zi-ji/</id>
-        <link href="https://llllchyi.github.io/xie-gei-27-sui-de-zi-ji/">
-        </link>
-        <updated>2020-08-25T08:37:14.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[谈谈我为什么要写博客]]></title>
