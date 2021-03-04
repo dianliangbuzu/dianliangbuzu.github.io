@@ -1,96 +1,98 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Electron 启动动画 | 电量不足的小站</title>
-<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1611633053937">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="努力是对于更好生活的向往。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1614819838443">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://llllchyi.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Electron 启动动画 | 电量不足的小站 - Atom Feed" href="https://llllchyi.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+  
 
-    <meta name="description" content="Electron是通过Chromium和Node.js集成来达到这一开发体验的, 我们可以用React / Vue 很轻松的搭建一个桌面应用程序。应用启动时就避免不了短暂的白屏或者需要启动时加载基础数据。
-那么怎样解决这一问题呢?
-有APP..." />
-    <meta name="keywords" content="electron" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css" />
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://llllchyi.github.io">
-  <img class="avatar" src="https://llllchyi.github.io/images/avatar.png?v=1611633053937" alt="">
-  </a>
-  <h1 class="site-title">
-    电量不足的小站
-  </h1>
-  <p class="site-description">
-    努力是对于更好生活的向往。
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/about" class="menu">
-          关于
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://llllchyi.github.io">电量不足的小站</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
+</nav>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Electron 启动动画
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-12-29
-              </span>
-              <span>
-                2 min read
-              </span>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Electron 启动动画</h1>
+            <p class="article-meta">
+              2020-12-29
               
-                <a href="https://llllchyi.github.io/electron/" class="post-tag">
-                  # electron
+                <a href="https://llllchyi.github.io/electron/" class="badge success">
+                  electron
                 </a>
               
-            </div>
+            </p>
             
-              <img class="post-feature-image" src="https://llllchyi.github.io/post-images/electron-qi-dong-dong-hua.jpeg" alt="">
+              <img src="https://llllchyi.github.io/post-images/electron-qi-dong-dong-hua.jpeg" alt="Electron 启动动画">
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>Electron是通过Chromium和Node.js集成来达到这一开发体验的, 我们可以用React / Vue 很轻松的搭建一个桌面应用程序。应用启动时就避免不了短暂的白屏或者需要启动时加载基础数据。</p>
+            <div class="post-content">
+              <p>Electron是通过Chromium和Node.js集成来达到这一开发体验的, 我们可以用React / Vue 很轻松的搭建一个桌面应用程序。应用启动时就避免不了短暂的白屏或者需要启动时加载基础数据。</p>
 <p>那么怎样解决这一问题呢?<br>
 有APP开发经验的同学肯定立马就想到了 启动动画(开屏广告)。</p>
 <p>思路<br>
@@ -151,116 +153,164 @@ app.on('ready', () =&gt; {
     }
     mainWindow.show();
   })
-
 });
 </code></pre>
 <h2 id="效果预览">效果预览</h2>
 <p><img src="https://llllchyi.github.io/post-images/1609226938439.gif" alt="" loading="lazy"><br>
 大功告成🎉</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E8%BF%9B%E7%A8%8Bmainjs%E6%96%87%E4%BB%B6">配置主进程main.js文件</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BAloading%E7%AA%97%E5%8F%A3">创建loading窗口</a></li>
-<li><a href="#%E5%8A%A8%E7%94%BB%E5%B1%95%E7%A4%BA%E9%9A%90%E8%97%8F">动画展示隐藏</a></li>
-<li><a href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88">效果预览</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://llllchyi.github.io/cordova-ios-app/">
-              <h3 class="post-title">
-                Cordova - 打包IOS APP
-              </h3>
-            </a>
-          </div>
-        
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://llllchyi.github.io/cordova-ios-app/">
+                <h3 class="post-title">
+                  Cordova - 打包IOS APP
+                </h3>
+              </a>
+            </div>
+          
+        </div>
         
           
 
           
-            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
-<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+            <div class="paper" data-aos="fade-in">
+              <div id="disqus_thread"></div>
+            </div>
+          
+        
+      </div>
 
-<div id="disqus_thread"></div>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://llllchyi.github.io/images/avatar.png?v=1614819838443" class="no-responsive avatar">
+    <div class="text-muted">努力是对于更好生活的向往。</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/liao-yi-liao-promise/">聊一聊Promise</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/electron-qi-dong-dong-hua/">Electron 启动动画</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/cordova-ios-app/">Cordova - 打包IOS APP</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/xie-gei-27-sui-de-zi-ji/">写给27岁的自己</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/me/">谈谈我为什么要写博客</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://llllchyi.github.io/about/">关于</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://llllchyi.github.io/electron/" class="badge secondary">
+          electron
+        </a>
+      
+        <a href="https://llllchyi.github.io/0C1SHnkCB/" class="badge secondary">
+          cordova
+        </a>
+      
+        <a href="https://llllchyi.github.io/MDJMwwyVZ/" class="badge success">
+          关于我
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by Gridea | <a class="rss" href="https://llllchyi.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
-<script>
 
-var options = {
-  shortname: 'dianliangbuzu',
-  apikey: 'so66NUOEsL4GvjcEYrAr0zIKAJJdHsaAPBg41HxjGcEVWKRG9BkDaTJJ0EwzVAd4',
-}
-if ('https://disqus.com/api/oauth/2.0/access_token/') {
-  options.api = 'https://disqus.com/api/oauth/2.0/access_token/'
-}
-var dsqjs = new DisqusJS(options)
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
 
 </script>
 
-          
-        
 
-        <div class="site-footer">
-  Powered by Gridea
-  <a class="rss" href="https://llllchyi.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
 
-      </div>
-    </div>
+  
 
+  
+    <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
     <script>
-      hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+    var options = {
+      shortname: 'dianliangbuzu',
+      apikey: 'so66NUOEsL4GvjcEYrAr0zIKAJJdHsaAPBg41HxjGcEVWKRG9BkDaTJJ0EwzVAd4',
+    }
+    if ('https://disqus.com/api/oauth/2.0/access_token/') {
+      options.api = 'https://disqus.com/api/oauth/2.0/access_token/'
+    }
+    var dsqjs = new DisqusJS(options)
 
     </script>
+  
+
+
+
+
   </body>
 </html>
