@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>ESLint 快速上手指北 | 电量不足的小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1617084387125">
+<link rel="stylesheet" href="https://llllchyi.github.io/styles/main.css">
+
+
+  
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css" />
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="什么是ESLint？
+ESLint是一个用来识别 ECMAScript 并且按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。如果每次在代码提交之前都进行一次eslint代码检查，就不会因为某个字段未定义为undefi..." />
+    <meta name="keywords" content="eslint" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://llllchyi.github.io">
+        <img src="https://llllchyi.github.io/images/avatar.png?v=1617084387125" class="site-logo">
+        <h1 class="site-title">电量不足的小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      努力是对于更好生活的向往。
+    </div>
+    <div class="site-footer">
+      Powered by Gridea | <a class="rss" href="https://llllchyi.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">ESLint 快速上手指北</h2>
+            <div class="post-date">2021-03-30</div>
+            
+              <div class="feature-container" style="background-image: url('https://llllchyi.github.io/post-images/eslint-kuai-su-shang-shou-zhi-bei.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="什么是eslint">什么是ESLint？</h2>
+<p>ESLint是一个用来识别 ECMAScript 并且按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。如果每次在代码提交之前都进行一次eslint代码检查，就不会因为某个字段未定义为undefined或null这样的错误而导致服务崩溃，可以有效的控制项目代码的质量</p>
+<h2 id="为什么要使用eslint">为什么要使用ESlint?</h2>
+<p>俗话说的好没有规矩不成方圆 代码规范是程序员的根本，入门第一步，从规范代码开始。<br>
+eslint根本目的是统一项目的代码风格规范，养成规范的写代码习惯，减少不必要的错误和隐患。</p>
+<h2 id="开箱">开箱</h2>
+<p>全局安装</p>
+<pre><code>npm install -g eslint
+</code></pre>
+<p>如果你想你所有项目都使用eslint，请全局安装</p>
+<p>项目安装</p>
+<pre><code>npm install --save-dev eslint
+</code></pre>
+<h2 id="使用">使用</h2>
+<p>项目根目录新建.eslintrc.js文件 配置eslint。<br>
+如果全局安装eslint可以在项目运行, 初始化配置文件。<br>
+可以根据个人喜好或团队选择</p>
+<pre><code>eslint --init
+
+1 How would you like to use ESLint? (Use arrow keys)
+To check syntax only   // 只检查语法
+❯ To check syntax and find problems // 检查语法并找出问题
+To check syntax, find problems, and enforce code style // 检查语法、发现问题并强制执行代码样式
+
+2 What type of modules does your project use? (Use arrow keys)
+❯ JavaScript modules (import/export) 
+  CommonJS (require/exports) 
+  None of these
+
+3 Which framework does your project use? 
+  React 
+  Vue.js 
+❯ None of these
+
+...
+</code></pre>
+<p>初始化配置如下</p>
+<pre><code>module.exports = {
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;es6&quot;: true
+    },
+    &quot;extends&quot;: &quot;eslint:recommended&quot;,
+    &quot;globals&quot;: {
+        &quot;Atomics&quot;: &quot;readonly&quot;,
+        &quot;SharedArrayBuffer&quot;: &quot;readonly&quot;
+    },
+    &quot;parserOptions&quot;: {
+        &quot;ecmaVersion&quot;: 2018
+    },
+    &quot;rules&quot;: {
+    }
+};
+</code></pre>
+<p>接下来添加一条rule</p>
+<pre><code>&quot;rules&quot;: {
+	// if while function 后面的{ 必须与if在同一行。
+	&quot;brace-style&quot;: [2, &quot;1tbs&quot;, { &quot;allowSingleLine&quot;: true }],
+}
+</code></pre>
+<p>测试文件: util.js</p>
+<pre><code>var d = new Date()
+var time = d.getHours()
+if (time&lt;10)
+{
+document.write(&quot;&lt;b&gt;Good morning&lt;/b&gt;&quot; )
+}
+else if (time&gt;=10 &amp;&amp; time&lt;16) 
+{
+document.write(&quot;&lt;b&gt;Good day&lt;/b&gt;&quot;)
+}
+else
+{
+document.write(&quot;&lt;b&gt;Hello World!&lt;/b&gt;&quot;)
+}
+</code></pre>
+<p>控制台执行</p>
+<pre><code>eslint src/util.js
+</code></pre>
+<p>eslint rule生效 结果自然是会报错<br>
+在当前场景大括号不能单独占一行</p>
+<pre><code>...src/util.js
+
+4:1  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+   6:1  error  Closing curly brace does not appear on the same line as the subsequent block   brace-style
+   9:1  error  Closing curly brace does not appear on the same line as the subsequent block   brace-style
+  11:1  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+
+✖ 4 problems (4 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
+</code></pre>
+<p>这时我们可以执行 eslint --fix<br>
+package中配置命令替代单个eslint --fix</p>
+<pre><code>eslint --fix util.js // 自行纠正
+
+// 配置命令全局执行,省事
+// package.js 
+&quot;scripts&quot;: {
+	&quot;eslint-fix&quot;: &quot;eslint src/**/*.*  --fix&quot;
+}
+</code></pre>
+<p>接下来在新建一个vue文件<br>
+src/index.vue<br>
+控制台执行</p>
+<pre><code>npm run eslint-fix
+</code></pre>
+<p>出现报错<br>
+<img src="https://llllchyi.github.io/post-images/1617073822032.jpg" alt="" loading="lazy"><br>
+eslint此时不认识vue文件, 所以只能当成js文件进行处理,<br>
+正因为js外层不能包含html标记 所以会出现报错信息。</p>
+<h2 id="如何在vue或react中使用eslint">如何在Vue或React中使用EsLint?</h2>
+<p>vue或react都有对应的插件实现<br>
+<a href="https://github.com/vuejs/eslint-plugin-vue">eslint-plugin-vue</a><br>
+<a href="https://github.com/yannickcr/eslint-plugin-react">eslint-plugin-react</a><br>
+由于 Vue 中的单个文件组件不是普通的 JavaScript，因此无法使用默认解析器，因此引入了新的文件组件。 通过表示模板语法的特定部分以及标签内的内容生成增强的 AST 节点。</p>
+<p>以上面Vue文件报错为例子<br>
+我们可以通过<a href="https://github.com/vuejs/eslint-plugin-vue">eslint-plugin-vue</a>来实现<br>
+首先项目根目录安装</p>
+<pre><code>npm install --save-dev eslint eslint-plugin-vue
+</code></pre>
+<p>然后执行 npm run eslint-fix进行校验<br>
+前面所遇到的html标记已经得到解决 eslint能正确识别vue文件。</p>
+<h2 id="配合ide食用更佳">配合IDE食用更佳</h2>
+<p>在实际的开发过程中, 当然希望编辑器能即使反馈错误并提示<br>
+以VsCode为例</p>
+<h2 id="安装插件">安装插件</h2>
+<figure data-type="image" tabindex="1"><img src="https://llllchyi.github.io/post-images/1617082974563.jpg" alt="" loading="lazy"></figure>
+<h2 id="预期效果">预期效果</h2>
+<figure data-type="image" tabindex="2"><img src="https://llllchyi.github.io/post-images/1617082995053.jpg" alt="" loading="lazy"></figure>
+<p>如果未生效<br>
+请确保EsLint开启<br>
+如遇报错 解决报错直至开启<br>
+<img src="https://llllchyi.github.io/post-images/1617083098008.jpg" alt="" loading="lazy"></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://llllchyi.github.io/eslint/" class="tag">
+                    eslint
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://llllchyi.github.io/electron-qi-dong-dong-hua/">
+                  <h3 class="post-title">
+                    Electron 启动动画
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+
+              
+                <div id="disqus_thread" data-aos="fade-in"></div>
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+
+  
+    <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+    <script>
+
+    var options = {
+      shortname: 'dianliangbuzu',
+      apikey: 'so66NUOEsL4GvjcEYrAr0zIKAJJdHsaAPBg41HxjGcEVWKRG9BkDaTJJ0EwzVAd4',
+    }
+    if ('https://disqus.com/api/oauth/2.0/access_token/') {
+      options.api = 'https://disqus.com/api/oauth/2.0/access_token/'
+    }
+    var dsqjs = new DisqusJS(options)
+
+    </script>
+  
+
+
+
+
+  </body>
+</html>
