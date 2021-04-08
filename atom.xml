@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://llllchyi.github.io</id>
     <title>电量不足的小站</title>
-    <updated>2021-04-07T09:26:06.864Z</updated>
+    <updated>2021-04-08T09:58:12.447Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://llllchyi.github.io"/>
     <link rel="self" href="https://llllchyi.github.io/atom.xml"/>
-    <subtitle>生活坏到一定程度就会好起来
-因为它无法更坏</subtitle>
+    <subtitle>昨天就像飞机穿过我的窗口
+我什么都没有</subtitle>
     <logo>https://llllchyi.github.io/images/avatar.png</logo>
     <icon>https://llllchyi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 电量不足的小站</rights>
     <entry>
-        <title type="html"><![CDATA[ESLint 快速上手指北]]></title>
+        <title type="html"><![CDATA[ESLint 快速上手]]></title>
         <id>https://llllchyi.github.io/eslint-kuai-su-shang-shou-zhi-bei/</id>
         <link href="https://llllchyi.github.io/eslint-kuai-su-shang-shou-zhi-bei/">
         </link>
