@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Electron 自动更新/手动触发更新 | 电量不足的小站</title>
-<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1619070720886">
+<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1619071009545">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://llllchyi.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Electron 自动更新/手动触发更新 | 电量不足的小站 - Atom Feed" href="https://llllchyi.github.io/atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://llllchyi.github.io">
-  <img class="avatar" src="https://llllchyi.github.io/images/avatar.png?v=1619070720886" alt="">
+  <img class="avatar" src="https://llllchyi.github.io/images/avatar.png?v=1619071009545" alt="">
   </a>
   <h1 class="site-title">
     电量不足的小站
@@ -115,10 +115,10 @@ npm run electron:serve // 运行项目
     ],
 }
 </code></pre>
-<p>如果是vue-cli-plugin-electron-builder打包则会报错如下:<br>
-Question||'build' in the application package.json is not supported since 3.0<br>
+<p>如果是<a href="https://github.com/nklayman/vue-cli-plugin-electron-builder">vue-cli-plugin-electron-builder</a>打包则会报错如下:<br>
+<font color=red>Question||'build' in the application package.json is not supported since 3.0</font><br>
 因为3.0后不支持json的方式, 需要移除package.json “build”<br>
-打开vue.config.js 添加builderOptions<br>
+打开<font color=green>vue.config.js</font> 添加builderOptions<br>
 后续需要在vue中使用ipcRenderer(主进程与渲染进程通信)<br>
 所以需要设置 //  nodeIntegration: true</p>
 <pre><code>module.exports = {
@@ -145,7 +145,7 @@ Question||'build' in the application package.json is not supported since 3.0<br>
   }
 }
 </code></pre>
-<p>找到background.js<br>
+<p>找到<font color=green>background.js</font><br>
 初始化 autoUpdater</p>
 <pre><code>'use strict'
 import { app, protocol, BrowserWindow, ipcMain } from 'electron'
@@ -251,7 +251,7 @@ function updateHandle() {
 }
 </code></pre>
 <h2 id="打包测试">打包测试</h2>
-<p>修改package.json 版本号 1.0.1</p>
+<p>修改<font color=green>package.json </font>版本号 1.0.1</p>
 <pre><code>{
   &quot;name&quot;: &quot;electron-vue-demo&quot;,
   &quot;version&quot;: &quot;1.0.1&quot;,
@@ -287,7 +287,7 @@ vue-cli-service electron:build<br>
   ]
 }
 </code></pre>
-<p>server.js</p>
+<p><font color=green>server.js</font></p>
 <pre><code>const Koa = require('koa');
 const app = new Koa();
 const path = require('path');
@@ -301,7 +301,7 @@ app.listen(3006,function(){
 });
 </code></pre>
 <p>回到项目<br>
-打开background.js</p>
+打开<font color=green>background.js</font></p>
 <pre><code>import { ipcMain } from 'electron'
 // ipcMain 监听渲染进程checkForUpdate 事件
 ipcMain.on(&quot;checkForUpdate&quot;,() =&gt; {
@@ -373,7 +373,8 @@ autoUpdater.quitAndInstall(); // 执行推出安装更新<br>
 依次执行后实现了更新操作, 当然这对用户来说非常不友好，需要把更新流程交给用户去控制。<br>
 autoUpdater给我们提供 download-progress(更新进度)、update-downloaded(更新完成) 监听。</p>
 <h2 id="最终效果">最终效果</h2>
-<p>App.vue</p>
+<p><img src="https://llllchyi.github.io/post-images/1619070773840.gif" alt="" loading="lazy"><br>
+<font color=green>App.vue</font></p>
 <pre><code>&lt;template&gt;
   &lt;div id=&quot;app&quot;&gt;
     &lt;a-button @click=&quot;checkForUpdates&quot;&gt;检查更新&lt;/a-button&gt;
@@ -586,7 +587,7 @@ export default {
 }
 &lt;/style&gt;
 </code></pre>
-<p>background.js</p>
+<p><font color=green>background.js</font></p>
 <pre><code>'use strict'
 import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
