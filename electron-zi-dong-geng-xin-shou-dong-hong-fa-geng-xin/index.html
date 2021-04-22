@@ -1,0 +1,853 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Electron 自动更新/手动触发更新 | 电量不足的小站</title>
+<link rel="shortcut icon" href="https://llllchyi.github.io/favicon.ico?v=1619070720886">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://llllchyi.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Electron 自动更新/手动触发更新 | 电量不足的小站 - Atom Feed" href="https://llllchyi.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="背景
+我们用Electron开发了桌面应用PHDS, 项目同时也在不断更新迭代。我们希望只要发布了最新的版本，用户就能够收到更新提示从而进行升级。调研了市面上的实现方式后决定采取electron-updater插件来实现更新功能。elect..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://llllchyi.github.io">
+  <img class="avatar" src="https://llllchyi.github.io/images/avatar.png?v=1619070720886" alt="">
+  </a>
+  <h1 class="site-title">
+    电量不足的小站
+  </h1>
+  <p class="site-description">
+    昨天就像飞机穿过我的窗口
+我什么都没有
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Electron 自动更新/手动触发更新
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-04-22
+              </span>
+              <span>
+                15 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://llllchyi.github.io/post-images/electron-zi-dong-geng-xin-shou-dong-hong-fa-geng-xin.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="背景">背景</h2>
+<p>我们用Electron开发了桌面应用PHDS, 项目同时也在不断更新迭代。我们希望只要发布了最新的版本，用户就能够收到更新提示从而进行升级。调研了市面上的实现方式后决定采取<a href="https://www.npmjs.com/package/electron-updater">electron-updater</a>插件来实现更新功能。<a href="https://www.npmjs.com/package/electron-updater">electron-updater</a>只需要简单的文件托管，不需要专用的服务器就能实现更新。</p>
+<h2 id="开始">开始</h2>
+<p>我们先用脚手架新建一个空项目</p>
+<pre><code>vue create electron-vue-demo // 新建项目
+vue add electron-builder // 安装electron v11.0.0
+npm run electron:serve // 运行项目
+</code></pre>
+<h2 id="安装">安装</h2>
+<pre><code>npm i electron-updater
+</code></pre>
+<h2 id="配置">配置</h2>
+<p>package.json</p>
+<pre><code>&quot;build&quot;: {
+    &quot;productName&quot;: &quot;demo&quot;,
+    &quot;appId&quot;: &quot;demo.fspace.com&quot;,
+    &quot;directories&quot;: {
+      &quot;output&quot;: &quot;release&quot;
+    },
+    &quot;publish&quot;: [
+      {
+        &quot;provider&quot;: &quot;generic&quot;,  // 服务器提供商 也可以是GitHub等等
+        &quot;url&quot;: &quot;http://114.115.142.127:8989/download/&quot;, // 更新文件存放位置
+        &quot;channel&quot;: &quot;latest&quot;,
+        &quot;useMultipleRangeRequest&quot;: false
+      }
+    ],
+}
+</code></pre>
+<p>如果是vue-cli-plugin-electron-builder打包则会报错如下:<br>
+Question||'build' in the application package.json is not supported since 3.0<br>
+因为3.0后不支持json的方式, 需要移除package.json “build”<br>
+打开vue.config.js 添加builderOptions<br>
+后续需要在vue中使用ipcRenderer(主进程与渲染进程通信)<br>
+所以需要设置 //  nodeIntegration: true</p>
+<pre><code>module.exports = {
+    ...
+  pluginOptions: {
+    electronBuilder: {
+        nodeIntegration: true, // ipcRenderer
+      builderOptions: {
+        productName: &quot;demo&quot;,
+        appId: &quot;demo.fspace.com&quot;,
+        directories: {
+          &quot;output&quot;: &quot;release&quot;
+        },
+        publish: [
+          {
+            &quot;provider&quot;: &quot;generic&quot;,  // 服务器提供商 也可以是GitHub等等
+            &quot;url&quot;: &quot;http://localhost:3006/&quot;, // 更新文件存放位置
+            &quot;channel&quot;: &quot;latest&quot;,
+            &quot;useMultipleRangeRequest&quot;: false
+          }
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+<p>找到background.js<br>
+初始化 autoUpdater</p>
+<pre><code>'use strict'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+import * as path from 'path';
+const fs = require('fs');
+const { autoUpdater } = require('electron-updater');
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const download_url = 'http://localhost:3006/';
+var package_json = require('../package.json');
+var mainWindow = null;
+// Scheme must be registered before the app is ready
+protocol.registerSchemesAsPrivileged([
+  { scheme: 'app', privileges: { secure: true, standard: true } }
+])
+async function createWindow() {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      
+      // Use pluginOptions.nodeIntegration, leave this alone
+      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
+    }
+  })
+  if (process.env.WEBPACK_DEV_SERVER_URL) {
+    // Load the url of the dev server if in development mode
+    await mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    if (!process.env.IS_TEST) mainWindow.webContents.openDevTools()
+  } else {
+    createProtocol('app')
+    // Load the index.html when not in development
+    mainWindow.loadURL('app://./index.html')
+  }
+}
+// Quit when all windows are closed.
+app.on('window-all-closed', () =&gt; {
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+app.on('activate', () =&gt; {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', async () =&gt; {
+  if (isDevelopment &amp;&amp; !process.env.IS_TEST) {
+    // Install Vue Devtools
+    try {
+      await installExtension(VUEJS_DEVTOOLS)
+    } catch (e) {
+      console.error('Vue Devtools failed to install:', e.toString())
+    }
+  }
+  console.log('ready')
+  createWindow()
+  updateHandle();
+})
+// Exit cleanly on request from parent process in development mode.
+if (isDevelopment) {
+  if (process.platform === 'win32') {
+    process.on('message', (data) =&gt; {
+      if (data === 'graceful-exit') {
+        app.quit()
+      }
+    })
+  } else {
+    process.on('SIGTERM', () =&gt; {
+      app.quit()
+    })
+  }
+}
+function updateHandle() {
+  autoUpdater.currentVersion = package_json.version;
+  autoUpdater.setFeedURL(download_url);
+  // 取消自动更新
+  autoUpdater.autoDownload = false;
+  
+  autoUpdater.on('checking-for-update', (info) =&gt; {
+    // 开始检查是否有新版本
+    // 可以在这里提醒用户正在查找新版本
+    console.log('checking-for-update')
+  })
+  autoUpdater.on('update-available', (info) =&gt; {
+    // 检查到有新版本
+    // 提醒用户已经找到了新版本
+    console.log('检查到有新版本')
+  })
+  
+  autoUpdater.on('error', (err) =&gt; {
+    // 自动升级遇到错误
+  })
+  
+}
+</code></pre>
+<h2 id="打包测试">打包测试</h2>
+<p>修改package.json 版本号 1.0.1</p>
+<pre><code>{
+  &quot;name&quot;: &quot;electron-vue-demo&quot;,
+  &quot;version&quot;: &quot;1.0.1&quot;,
+  ...
+}
+</code></pre>
+<p>执行打包<br>
+vue-cli-service electron:build<br>
+打包后release目录 (当前为mac打包)</p>
+<pre><code>├── release
+│   ├── demo-1.0.1-mac.zip
+│   ├── demo-1.0.1.dmg                   // 安装文件
+│   ├── demo-1.0.1.dmg.blockmap // 用于差异更新, mac好像无效 
+│   ├── latest-mac.yml                  // 更新相关文件
+│   └── mac
+├── ...
+└── package.json
+</code></pre>
+<h2 id="搭建静态服务">搭建静态服务</h2>
+<p>koa koa-static 配置静态目录</p>
+<pre><code>├── server
+│   ├── public  // 存放更新文件           
+│   └── server.js   
+├── ...
+└── package.json
+</code></pre>
+<p>我们把demo-1.0.1-mac.zip / latest-mac.yml / 更新日志 放入更新目录public<br>
+1.0.1.json</p>
+<pre><code>{
+  &quot;version&quot;: &quot;V1.0.1&quot;,
+  &quot;content&quot;: [
+  &quot;-🎉  v1.0.1版本盛大发布。&quot;
+  ]
+}
+</code></pre>
+<p>server.js</p>
+<pre><code>const Koa = require('koa');
+const app = new Koa();
+const path = require('path');
+const serve = require('koa-static');
+ 
+const main = serve(path.join(__dirname+'/public'));
+app.use(main);
+ 
+app.listen(3006,function(){
+  console.log(&quot;监听3006端口&quot;)
+});
+</code></pre>
+<p>回到项目<br>
+打开background.js</p>
+<pre><code>import { ipcMain } from 'electron'
+// ipcMain 监听渲染进程checkForUpdate 事件
+ipcMain.on(&quot;checkForUpdate&quot;,() =&gt; {
+  autoUpdater.currentVersion = package_json.version;
+  //执行更新检查
+  autoUpdater.checkForUpdates();
+})
+function updateHandle() {
+    ...
+  autoUpdater.on('update-available', (info) =&gt; {
+    // 检查到有新版本
+    // 提醒用户已经找到了新版本
+    console.log('检查到有新版本', info)
+  })
+  ...
+}
+打开app.vue
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;checkForUpdates&quot;&gt;检查更新&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { ipcRenderer } from &quot;electron&quot;;
+export default {
+  name: 'App',
+  methods: {
+    checkForUpdates() {
+      // 通知主进程检查更新
+      ipcRenderer.send('checkForUpdate')
+    }
+  }
+}
+&lt;/script&gt;
+&lt;style&gt;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+</code></pre>
+<p>点击按钮, 控制台打印如下</p>
+<pre><code>检查到有新版本 {
+  version: '1.0.1',
+  files: [
+    {
+      url: 'demo-1.0.1-mac.zip',
+      sha512: 'PJeIr6HilOlNrcR8HEimQQuJHjEiK7x2PHhOGnmul5tTI2n0R7+6PP8S5j3+bwfZzSkjBWWWYnlR8WNoQ17YBQ==',
+      size: 77708593,
+      blockMapSize: 82077
+    },
+    {
+      url: 'demo-1.0.1.dmg',
+      sha512: 'i++/bWJ7pxIkShS+WehKkP8rLMjbKtHvFV/aLmDDj8lEqeyKP8cnVpSSlNNbqOwcqbxSzR5t07QMIUIVf0AMYw==',
+      size: 80015179
+    }
+  ],
+  path: 'demo-1.0.1-mac.zip',
+  sha512: 'PJeIr6HilOlNrcR8HEimQQuJHjEiK7x2PHhOGnmul5tTI2n0R7+6PP8S5j3+bwfZzSkjBWWWYnlR8WNoQ17YBQ==',
+  releaseDate: '2021-04-21T05:38:20.929Z'
+}
+</code></pre>
+<p>autoUpdater.downloadUpdate(); // 下载更新<br>
+autoUpdater.quitAndInstall(); // 执行推出安装更新<br>
+依次执行后实现了更新操作, 当然这对用户来说非常不友好，需要把更新流程交给用户去控制。<br>
+autoUpdater给我们提供 download-progress(更新进度)、update-downloaded(更新完成) 监听。</p>
+<h2 id="最终效果">最终效果</h2>
+<p>App.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;a-button @click=&quot;checkForUpdates&quot;&gt;检查更新&lt;/a-button&gt;
+    &lt;!-- 更新提示框 --&gt;
+    &lt;div class=&quot;main-container__upgrade-panel&quot; v-if=&quot;show&quot;&gt;
+      &lt;div class=&quot;main-container__upgrade-panel-title&quot;&gt;
+        {{`发现新版本${versionInfo.version}`}}
+        &lt;span @click=&quot;() =&gt; { show = !show }&quot;&gt;&lt;a-tooltip title=&quot;最小化&quot; placement=&quot;top&quot;&gt;&lt;a-icon type=&quot;down-circle&quot; /&gt;&lt;/a-tooltip&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;main-container__upgrade-panel-body&quot;&gt;
+        &lt;div class=&quot;main-container__pd1t&quot;&gt;
+          更新日志:
+          &lt;/div&gt;
+          &lt;div v-for=&quot;(item, index) in versionInfo.content&quot; :key=&quot;index&quot;&gt;{{item}}&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;main-container__upgrade-panel-footer&quot;&gt;
+        &lt;div style=&quot;width: 305px;&quot;&gt;
+          &lt;a-progress
+            :stroke-color=&quot;{
+              from: '#108ee9',
+              to: '#87d068',
+            }&quot;
+            :percent=&quot;progress.percent&quot;
+            status=&quot;active&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;a-button style=&quot;margin-right: 10px;&quot; v-if=&quot;canInstall&quot; type=&quot;primary&quot; @click=&quot;() =&gt; icpSend('quitAndInstall')&quot;&gt;安装&lt;/a-button&gt;
+        &lt;a-button style=&quot;margin-right: 10px;&quot; v-else type=&quot;primary&quot; :loading=&quot;loading&quot;  @click=&quot;() =&gt; { loading = true, icpSend('downloadUpdate') }&quot;&gt; &lt;a-icon v-if=&quot;!loading&quot; type=&quot;down-square&quot; /&gt; 更新&lt;/a-button&gt;
+        &lt;a-button :disabled=&quot;progress.percent &gt; 0&quot; type=&quot;dashed&quot; @click=&quot;() =&gt; { show = !show }&quot;&gt;下次再说&lt;/a-button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { ipcRenderer } from &quot;electron&quot;;
+export default {
+  name: 'App',
+  data() {
+    return {
+      download_url: 'http://localhost:3006/',
+      canInstall: false,
+      show: false,
+      progress: {
+        bytesPerSecond: 0,
+        delta: 0,
+        percent: 0,
+        total: 0,
+        transferred: 0
+      },
+      loading: false,
+      versionInfo: {
+        version: '',
+        content: [
+          '123',
+          '456'
+        ]
+      }
+    }
+  },
+  created() {
+    // 版本有更新时提示
+    ipcRenderer.on(&quot;updateAvailable&quot;, async (event, info) =&gt; {
+      const verInfo = await this.getVersionInfo(info);
+      if (verInfo) {
+        try {
+          this.versionInfo.version = JSON.parse(verInfo).version;
+          this.versionInfo.content = JSON.parse(verInfo).content;
+        } catch (e) {
+          console.log(e)
+        }
+        this.show = true;
+      }
+    });
+    // 下载进度条
+    ipcRenderer.on(&quot;downloadProgress&quot;, (event, progressObj) =&gt; {
+      progressObj.percent = Number(progressObj.percent.toFixed(1));
+      this.progress = {
+        ...progressObj
+      };
+    });
+    ipcRenderer.on(&quot;isUpdateNow&quot;, () =&gt; {
+      this.canInstall = true;
+      this.show = true;
+    });
+  },
+  methods: {
+    async getVersionInfo(info) {
+      return new Promise((resolve) =&gt; {
+        let xhr = new XMLHttpRequest();
+        xhr.open('get', this.download_url + info.version + '.json', true);
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+          
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              
+              resolve(xhr.responseText)
+            } else {
+              resolve(null)
+            }
+          }
+        };
+      });
+    },
+    icpSend(name) {
+      ipcRenderer.send(name);
+    },
+    checkForUpdates() {
+      ipcRenderer.send('checkForUpdate')
+    }
+  }
+}
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot;&gt;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.main-container {
+  width: 100%;
+  position: relative;
+  // display: flex;
+  background: #f7f7f7;
+  &amp;__drag {
+    position: absolute;
+    width: calc(100% - 100px);
+    height: 25px;
+    -webkit-app-region: drag;
+    .overlay {
+      pointer-events: none;
+    }
+  }
+  &amp;__controls {
+    position: absolute;
+    right: 0;
+    -webkit-app-region: no-drag;
+    top: 0;
+    z-index: 200;
+    border-radius: 0 0 3px 3px;
+    padding: 0;
+    background: #bfbfbf21;
+    :hover {
+      color: white;
+      background: gray;
+    }
+    :nth-child(3):hover{
+      background-color: red;
+    }
+    &amp;-item {
+      display: inline-block;
+      padding: 5px 10px;
+      color: #ccc;
+      font-size: 12px;
+      -webkit-app-region: no-drag;
+    }
+  }
+  &amp;__upgrade-panel {
+    position: fixed;
+    z-index: 9999;
+    right: 10px;
+    bottom: 25px;
+    width: 340px;
+    background-color: #34373c;
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0px 0px 5px 5px rgba(133,133,133,0.25);
+    ::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
+    &amp;-title {
+      padding: 10px 15px;
+      width: 100%;
+      height: 40px;
+      border-bottom: 1px solid white;
+      span {
+        position: absolute;
+        font-size: 14px;
+        right: 10px;
+      }
+      span:hover {
+        color:#FFFFFF;
+        background-color:#6dd214;
+        text-shadow:none;
+      }
+    }
+    &amp;-body {
+      overflow-y: auto;
+      padding: 10px 15px;
+      max-height: 100px;
+    }
+    &amp;-footer {
+      padding-left: 10px;
+      padding-bottom: 10px;
+      a-button {
+        margin-right: 15px;
+      }
+    }
+  }
+  &amp;__pd1t {
+    padding-top: 5px;
+  }
+}
+.ant-progress-text {
+  color: white !important;
+}
+&lt;/style&gt;
+</code></pre>
+<p>background.js</p>
+<pre><code>'use strict'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+const fs = require('fs');
+const { autoUpdater } = require('electron-updater');
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const download_url = 'http://localhost:3006/';
+var package_json = require('../package.json');
+var mainWindow = null;
+// Scheme must be registered before the app is ready
+protocol.registerSchemesAsPrivileged([
+  { scheme: 'app', privileges: { secure: true, standard: true } }
+])
+async function createWindow() {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      
+      // Use pluginOptions.nodeIntegration, leave this alone
+      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
+    }
+  })
+  if (process.env.WEBPACK_DEV_SERVER_URL) {
+    // Load the url of the dev server if in development mode
+    await mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    if (!process.env.IS_TEST) mainWindow.webContents.openDevTools()
+  } else {
+    createProtocol('app')
+    // Load the index.html when not in development
+    mainWindow.loadURL('app://./index.html')
+  }
+}
+// Quit when all windows are closed.
+app.on('window-all-closed', () =&gt; {
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+app.on('activate', () =&gt; {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', async () =&gt; {
+  if (isDevelopment &amp;&amp; !process.env.IS_TEST) {
+    // Install Vue Devtools
+    try {
+      await installExtension(VUEJS_DEVTOOLS)
+    } catch (e) {
+      console.error('Vue Devtools failed to install:', e.toString())
+    }
+  }
+  console.log('ready')
+  createWindow()
+  updateHandle();
+})
+// Exit cleanly on request from parent process in development mode.
+if (isDevelopment) {
+  if (process.platform === 'win32') {
+    process.on('message', (data) =&gt; {
+      if (data === 'graceful-exit') {
+        app.quit()
+      }
+    })
+  } else {
+    process.on('SIGTERM', () =&gt; {
+      app.quit()
+    })
+  }
+}
+const deleteFile = (path) =&gt; {
+  var files = [];
+  if( fs.existsSync(path) ) {
+      files = fs.readdirSync(path);
+      files.forEach(function(file){
+          var curPath = path + &quot;/&quot; + file;
+          if(fs.statSync(curPath).isDirectory()) {
+              deleteFile(curPath);
+          } else {
+              fs.unlinkSync(curPath);
+          }
+      });
+      fs.rmdirSync(path);
+  }
+};
+function updateHandle() {
+  autoUpdater.currentVersion = package_json.version;
+  autoUpdater.setFeedURL(download_url);
+  // 取消自动更新
+  autoUpdater.autoDownload = false;
+  
+  autoUpdater.on('checking-for-update', (info) =&gt; {
+    // 开始检查是否有新版本
+    // 可以在这里提醒用户正在查找新版本
+  })
+  autoUpdater.on('update-available', (info) =&gt; {
+    // 检查到有新版本
+    // 提醒用户已经找到了新版本
+    console.log(info)
+    mainWindow.webContents.send('updateAvailable', info)
+  })
+  
+  autoUpdater.on('update-not-available', (info) =&gt; {
+    // 检查到无新版本
+    // 提醒用户当前版本已经是最新版，无需更新
+  })
+  autoUpdater.on('download-progress', function (progressObj) {
+    // 更新进度条
+    mainWindow.webContents.send('downloadProgress', progressObj)
+  })
+  
+  autoUpdater.on('error', (err) =&gt; {
+    // 自动升级遇到错误
+  })
+  
+  autoUpdater.on('update-downloaded', (ev, releaseNotes, releaseName) =&gt; {
+    // 自动升级下载完成
+    // 可以询问用户是否重启应用更新，用户如果同意就可以执行 autoUpdater.quitAndInstall()
+    mainWindow.webContents.send('isUpdateNow')
+  })
+}
+ipcMain.on(&quot;checkForUpdate&quot;,() =&gt; {
+  console.log(autoUpdater.currentVersion)
+  autoUpdater.currentVersion = package_json.version;
+  //执行自动更新检查
+  autoUpdater.checkForUpdates();
+})
+ipcMain.on(&quot;downloadUpdate&quot;,() =&gt; {
+  try {
+    // 更新前删除本地更新包
+    deleteFile(autoUpdater.app.baseCachePath)
+  }catch {
+    
+  }
+  //执行自动更新检查
+  autoUpdater.downloadUpdate();
+})
+ipcMain.on(&quot;quitAndInstall&quot;,() =&gt; {
+  //执行自动更新检查
+  autoUpdater.quitAndInstall();
+})
+</code></pre>
+<h2 id="未完待续">未完待续</h2>
+<p>静默更新...</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E5%BC%80%E5%A7%8B">开始</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+<li><a href="#%E6%89%93%E5%8C%85%E6%B5%8B%E8%AF%95">打包测试</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E6%9C%8D%E5%8A%A1">搭建静态服务</a></li>
+<li><a href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C">最终效果</a></li>
+<li><a href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD">未完待续</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://llllchyi.github.io/eslint-kuai-su-shang-shou-zhi-bei/">
+              <h3 class="post-title">
+                ESLint 快速上手
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'dianliangbuzu',
+  apikey: 'so66NUOEsL4GvjcEYrAr0zIKAJJdHsaAPBg41HxjGcEVWKRG9BkDaTJJ0EwzVAd4',
+}
+if ('https://disqus.com/api/oauth/2.0/access_token/') {
+  options.api = 'https://disqus.com/api/oauth/2.0/access_token/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by Gridea
+  <a class="rss" href="https://llllchyi.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
